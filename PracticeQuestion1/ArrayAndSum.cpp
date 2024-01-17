@@ -1,5 +1,6 @@
 // There will be an array and a integer key. We want to find two numbers from the array where thier sum will be equal to the integer key user entered
 #include <iostream>
+#include <chrono> //to calculate the processing time
 using namespace std;
 
 int main()
@@ -18,6 +19,8 @@ int main()
 
     cout << "Enter the number to find the sum of : ";
     cin >> key;
+
+    auto start = chrono::high_resolution_clock::now(); // to get the starting time
 
     for (int j = 0; j < n; j++)
     {
@@ -39,5 +42,10 @@ int main()
         cout << "There are no pairs to be found to get the sum as " << key << endl;
     }
 
+    auto end = chrono::high_resolution_clock::now();
+
+    chrono::duration<double> duration = end - start;
+
+    cout << "Processing time = " << duration.count() << "sec" << endl;
     return 0;
 }
