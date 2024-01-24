@@ -1,5 +1,6 @@
 // find the elements in the array that occurs more than n/3 times
 #include <iostream>
+#include <chrono>
 
 using namespace std;
 
@@ -18,6 +19,8 @@ int main()
     {
         cin >> arr[j];
     }
+
+    auto start = chrono::high_resolution_clock::now(); // starting time
 
     for (int i = 0; i < n / 2; i++)
     {
@@ -44,6 +47,12 @@ int main()
     {
         cout << "No numbers repeated more than n/3 times";
     }
+
+    auto end = chrono::high_resolution_clock::now(); // ending time
+
+    chrono::duration<double> duration = end - start; // process time duration
+
+    cout << "\nTime Taken : " << duration.count();
 
     return 0;
 }
